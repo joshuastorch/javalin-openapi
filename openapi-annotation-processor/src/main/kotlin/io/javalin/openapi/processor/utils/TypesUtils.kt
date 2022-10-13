@@ -43,7 +43,7 @@ internal object TypesUtils {
         "LocalDate" to Data("string", "date"),
 
         "LocalDateTime" to Data("string", "date-time"),
-        "Instant" to Data("string", "date-time"),
+        "Instant" to Data("number", "int64"),
 
         "Object" to Data("object"),
         "Map" to Data("object"),
