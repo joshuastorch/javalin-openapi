@@ -399,9 +399,17 @@ internal class OpenApiGenerator {
         val nonRefType = TypesUtils.NON_REF_TYPES[model.simpleName]
 
         if (nonRefType == null) {
-            componentReferences.add(model.typeMirror)
-            parent.addProperty("\$ref", "#/components/schemas/${model.simpleName}")
-            return
+            if (model.simpleName == "Map") {
+                parent.addProperty("type", "object")
+                val additionalProperties = JsonObject()
+                addType(additionalProperties, model.generics[1])
+                parent.add("additionalProperties", additionalProperties)
+                return
+            } else {
+                componentReferences.add(model.typeMirror)
+                parent.addProperty("\$ref", "#/components/schemas/${model.simpleName}")
+                return
+            }
         }
 
         parent.addProperty("type", nonRefType.type)
