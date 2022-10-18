@@ -46,7 +46,6 @@ internal object TypesUtils {
         "Instant" to Data("number", "int64"),
 
         "Object" to Data("object"),
-        "Map" to Data("object"),
     )
 
     enum class DataType {
