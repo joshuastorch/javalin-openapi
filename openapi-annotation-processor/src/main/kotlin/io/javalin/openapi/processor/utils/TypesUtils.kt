@@ -37,6 +37,7 @@ internal object TypesUtils {
         "UUID" to Data("string"),
 
         "ByteArray" to Data("string", "binary"),
+        "Byte" to Data("string", "binary"),
         "InputStream" to Data("string", "binary"),
 
         "Date" to Data("string", "date"),
