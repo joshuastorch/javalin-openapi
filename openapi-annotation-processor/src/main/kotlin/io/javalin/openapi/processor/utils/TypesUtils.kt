@@ -33,7 +33,7 @@ internal object TypesUtils {
         "Char" to Data("string"),
         "Character" to Data("string"),
         "String" to Data("string"),
-        "BigDecimal" to Data("string"),
+        "BigDecimal" to Data("number", "double"),
         "BigInteger" to Data("number", "int64"),
         "UUID" to Data("string"),
         "ObjectId" to Data("string"),
