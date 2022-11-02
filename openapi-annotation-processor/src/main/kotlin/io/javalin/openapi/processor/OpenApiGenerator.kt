@@ -258,8 +258,18 @@ internal class OpenApiGenerator {
                     }
                 }
 
-                schema.addProperty("type", "object")
-                schema.add("properties", properties)
+                if (type.sourceElement.kind == ENUM) {
+                    val values = JsonArray()
+                    type.sourceElement.enclosedElements
+                        .filterIsInstance<VariableElement>()
+                        .map { it.simpleName.toString() }
+                        .forEach { values.add(it) }
+                    schema.addProperty("type", "string")
+                    schema.add("enum", values)
+                } else {
+                    schema.addProperty("type", "object")
+                    schema.add("properties", properties)
+                }
                 schemas.add(type.simpleName, schema)
 
                 if (requiredProperties.isNotEmpty()) {
